@@ -1,10 +1,28 @@
-import "./styles.css";
+import Header from "./Header";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import Home from "./Home";
+import PostPage from "./PostPage";
+import About from "./About";
+import NewPost from "./NewPost";
+
+import Missing from "./Missing";
+import { Route, Routes, useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Header />
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/post" element={<NewPost />} />
+        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<Missing />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
